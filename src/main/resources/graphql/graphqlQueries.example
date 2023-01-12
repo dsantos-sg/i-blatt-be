@@ -1,0 +1,93 @@
+Listar todos os tutoriais:
+
+query{
+  tutorials {
+    id
+    title
+    description
+    published
+  }
+}
+
+Resultado:
+{
+  "data": {
+    "tutorials": [
+      {
+        "id": "63b5f3d6a3994f57a6a75b1f",
+        "title": "Test",
+        "description": "Hello world...",
+        "published": false
+      },
+      {
+        "id": "63b5f3f4a3994f57a6a75b20",
+        "title": "Greeting",
+        "description": "Hi there.",
+        "published": false
+      },
+      {
+        "id": "63bdd73df5aa2b4f1e0f4e1d",
+        "title": "a new book over the table",
+        "description": "Some special thing",
+        "published": true
+      },
+      {
+        "id": "63bdd7bcf5aa2b4f1e0f4e1e",
+        "title": "let it be",
+        "description": "Amazing song from Beatles...",
+        "published": true
+      }
+    ]
+  }
+}
+
+
+Listar tutorial por id:
+query{
+  tutorialById(id: "63bdd7bcf5aa2b4f1e0f4e1e") {
+    id
+    title
+    description
+    published
+  }
+}
+
+Resultado:
+{
+  "data": {
+    "tutorialById": {
+      "id": "63bdd7bcf5aa2b4f1e0f4e1e",
+      "title": "let it be",
+      "description": "Amazing song from Beatles...",
+      "published": true
+    }
+  }
+}
+
+
+Adicionar um novo tutorial:
+mutation {
+  addTutorial(
+    input: {
+      title: "let it be",
+      description: "Amazing song from Beatles...",
+      published: true
+    }
+  ) {
+    id
+    title
+    description
+    published
+  }
+}
+
+{
+  "data": {
+    "addTutorial": {
+      "id": "63bdd7bcf5aa2b4f1e0f4e1e",
+      "title": "let it be",
+      "description": "Amazing song from Beatles...",
+      "published": true
+    }
+  }
+}
