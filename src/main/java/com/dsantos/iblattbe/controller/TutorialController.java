@@ -2,14 +2,18 @@ package com.dsantos.iblattbe.controller;
 
 import com.dsantos.iblattbe.model.Tutorial;
 import com.dsantos.iblattbe.repository.TutorialRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Optional;
 
-
+@CrossOrigin(origins = "*")
 @Controller
 public class TutorialController {
   private final TutorialRepository tutorialRepository;
@@ -24,7 +28,7 @@ public class TutorialController {
   }
 
   @QueryMapping
-  public Optional<Tutorial> tutorialById(@Argument String id){
+  public Optional<Tutorial> tutorialById(@Argument String id) {
     return this.tutorialRepository.findById(id);
   }
 
